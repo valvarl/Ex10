@@ -12,8 +12,7 @@ std::string infix2postfix(std::string infix) {
     std::istringstream ist(buf);
     std::string tmp;
     while ( ist >> tmp )
-        if (tmp[0] == '(')
-        {
+        if (tmp[0] == '(') {
             words.emplace_back("(");
             words.push_back(tmp.substr(1, tmp.size()-1));
         } else if (tmp[tmp.size()-1] == ')') {
@@ -25,10 +24,11 @@ std::string infix2postfix(std::string infix) {
     MyStack<char> ms;
     std::map<char, int> weights {{'(', 0}, {')', 1}, {'+', 2},
                                  {'-', 2}, {'*', 3}, {'/', 3}};
-    for (const std::string& s : words)
-    {
+    for (const std::string& s : words) {
         if (weights.find(s[0]) != weights.end()) {
-            if (ms.isEmpty() || weights[ms.get()] < weights[s[0]] || 0 == weights[s[0]]) {
+            if (ms.isEmpty() ||
+            weights[ms.get()] < weights[s[0]] ||
+            0 == weights[s[0]]) {
                 ms.push(s[0]);
             } else {
                 while (!ms.isEmpty() && weights[ms.get()] >= weights[s[0]]) {

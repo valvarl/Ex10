@@ -10,21 +10,18 @@ class MyStack {
  private:
     std::stack<T> st;
  public:
-    void push(const T t)
-    {
+    void push(const T t) {
         st.push(t);
     }
-    T pop(){
+    T pop() {
         T t = st.top();
         st.pop();
         return t;
     }
-    T get() const
-    {
+    T get() const {
         return st.top();
     }
-    bool isEmpty()
-    {
+    bool isEmpty() {
         return st.empty();
     }
 };
